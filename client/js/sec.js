@@ -3,8 +3,6 @@ var gProcessed = -1;
 var gSuccess = -1;
 var gFailed = -1;
 
-var gIOS = false;
-
   function encFullFile(file, pass) {
     var reader = new FileReader();
     reader.onload = function(e) {
@@ -60,17 +58,16 @@ var gIOS = false;
   
   function progress() {
     if (gProcessed) {
-        var p = (gProcessed / gExpected) * 100;
-        $('#progress').prop('value', p);
 
         if (gProcessed == gExpected) {
           $('#result').text("Done! " + (gFailed ? (gFailed + " file(s) failed to send.") : ""));
-          $('#clicky').removeAttr('disabled');
+
+          $('#clicky').button('reset');
           $('#pass').removeAttr('disabled');
           $('#files').removeAttr('disabled');
         }
-        else if (gIOS) {
-            $('#result').text("" + p + "% finished...");
+        else {
+          $('#progress').width('' + ((gProcessed / gExpected) * 100) + '%');
         } 
     }
   }
@@ -83,13 +80,12 @@ var gIOS = false;
       alert("You didn't specify any files!");
     }
     else {
-      $('#clicky').attr('disabled', 'disabled');
+      $('#clicky').button('loading');
       $('#pass').attr('disabled', 'disabled');
       $('#files').attr('disabled', 'disabled');
 
       $('#scon').show();
       handleFiles();
-        gIOS = ( navigator.userAgent.match(/(iPad|iPhone|iPod)/g) ? true : false );
     }
   }
 

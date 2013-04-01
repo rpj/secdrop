@@ -11,10 +11,11 @@
 <link href="/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
 </head>
 
-<body>
+<body style="padding: 15px;">
 
-<br/><br/>
-<div class="container" id="main" style="margin-left: 5px;">
+<div class="container" id="main"><!-- style="margin-left: 5px;">-->
+<h1>Secure Dropbox<br/><small>@ rpj.me</small></h1>
+<br/>
 <span class="lead">Choose your files:<br/></span>
 <input type="file" id="files" name="files[]" class="btn" style="width: 250px;" multiple />
 <br/>
@@ -29,12 +30,17 @@
 
 <br/><br/>
 
-<input type="submit" class="btn btn-primary" value="Send these files securely" style="width: 250px;" id="clicky" onclick="clicky(); return 0;"/>
+<input data-loading-text="Securing and sending..." autocomplete="off" type="submit" class="btn btn-primary" value="Send these files securely" style="width: 250px;" id="clicky" onclick="clicky(); return 0;"/>
 
 <br/><br/>
 
 <div id="result" style="font-weight: bold; display: none;">
+<!--
 <progress value="0" max="100" id="progress"  />
+-->
+<div class="progress progress-success active progress-striped" style="width: 250px;">
+    <div class="bar" id="progress" style="width: 0%"></div>
+</div>
 </div>
 
 <br/>
@@ -47,6 +53,7 @@ Show console
 
 <br/>
 
+<div class="text-center" style="width: 250px;">
 <span style="font-size: 0.6em;">
 <sup>*</sup> That's what she said.
 </span>

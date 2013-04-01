@@ -1,4 +1,4 @@
-secdrop
+Secdrop
 =======
 
 A secure, easy-to-use, iOS-compatible drop box. 
@@ -20,8 +20,8 @@ Recommended
 
 * An HTTPS server
 
-Source hierarchy explanation
-============================
+Source hierarchy
+================
 
 * `client/` - The client-side implementation of the UI, first-stage encryption and file-send functionality
 * `server/` - Server-side scripts for accepting uploads and performing second-stage asymmetric encryption.

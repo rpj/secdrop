@@ -1,0 +1,51 @@
+<html>
+<head>
+<title>Sec(ure file send).RPJ.me</title>
+
+<script src="/js/cryptojs-3.1.2/rollups/aes.js"></script>
+<script src="/js/jquery-1.9.1.min.js"></script>
+<script src="/js/sec.js"></script>
+
+<meta name="viewport" content="width=640" />
+</head>
+
+<body>
+<center>
+
+<br/><br/>
+<div style="width: 640px; text-align: center;" id="main">
+Choose your files (you may select more than one):<br/>
+<input type="file" id="files" name="files[]" multiple />
+
+<br/><br/>
+
+Enter a password or phrase (the longer the better<sup>*</sup>):<br/>
+<input id="pass" size=50 />
+
+<br/><br/>
+
+<input type="submit" value="Send these files securely" id="clicky" onclick="clicky(); return 0;"/>
+
+<br/><br/>
+
+<div id="result" style="font-weight: bold; display: none;">
+<progress value="0" max="100" id="progress"  />
+</div>
+
+<br/>
+<a href="#" id="scon" style="display: none; font-size: 0.75em;" onclick="$('#status').show(); $('#scon').hide(); return 0;">
+Show console
+</a>
+<br/>
+<div id="status" style="font-size: 0.7em; display: none;">
+</div>
+
+<br/>
+
+<span style="font-size: 0.5em;">
+<sup>*</sup>That's what she said.
+</span>
+</div>
+</center>
+</body>
+</html>

@@ -11,6 +11,7 @@ Requirements
 * CryptoJS <http://code.google.com/p/crypto-js/>
 * jQuery >= 1.9.1 <http://jquery.com>
 * GPG (or PGP I suppose) <http://www.gnupg.org> 
+* Bootstrap <http://twitter.github.com/bootstrap/>
 
 Recommended
 ===========

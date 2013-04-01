@@ -66,6 +66,8 @@ var gIOS = false;
         if (gProcessed == gExpected) {
           $('#result').text("Done! " + (gFailed ? (gFailed + " file(s) failed to send.") : ""));
           $('#clicky').removeAttr('disabled');
+          $('#pass').removeAttr('disabled');
+          $('#files').removeAttr('disabled');
         }
         else if (gIOS) {
             $('#result').text("" + p + "% finished...");
@@ -82,6 +84,9 @@ var gIOS = false;
     }
     else {
       $('#clicky').attr('disabled', 'disabled');
+      $('#pass').attr('disabled', 'disabled');
+      $('#files').attr('disabled', 'disabled');
+
       $('#scon').show();
       handleFiles();
         gIOS = ( navigator.userAgent.match(/(iPad|iPhone|iPod)/g) ? true : false );

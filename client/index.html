@@ -1,30 +1,35 @@
 <html>
 <head>
-<title>Sec(ure file send).RPJ.me</title>
+<title>Secure Dropbox @ rpj.me</title>
 
 <script src="/js/cryptojs-3.1.2/rollups/aes.js"></script>
 <script src="/js/jquery-1.9.1.min.js"></script>
+<script src="/bootstrap/js/bootstrap.min.js"></script>
 <script src="/js/sec.js"></script>
-
-<meta name="viewport" content="width=640" />
+<meta name="viewport" content="width=device-width" />
+<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+<link href="/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
 </head>
 
 <body>
-<center>
 
 <br/><br/>
-<div style="width: 640px; text-align: center;" id="main">
-Choose your files (you may select more than one):<br/>
-<input type="file" id="files" name="files[]" multiple />
-
-<br/><br/>
-
-Enter a password or phrase (the longer the better<sup>*</sup>):<br/>
-<input id="pass" size=50 />
+<div class="container" id="main" style="margin-left: 5px;">
+<span class="lead">Choose your files:<br/></span>
+<input type="file" id="files" name="files[]" class="btn" style="width: 250px;" multiple />
+<br/>
+<span class="muted">(you may select more than one)</span>
 
 <br/><br/>
 
-<input type="submit" value="Send these files securely" id="clicky" onclick="clicky(); return 0;"/>
+<span class="lead">Enter a password/phrase:<br/></span>
+<input id="pass" size=50 type="text" style="width: 250px; height: 30px;" />
+<br/>
+<span class="muted">(the longer the better<em>*</em>)</span>
+
+<br/><br/>
+
+<input type="submit" class="btn btn-primary" value="Send these files securely" style="width: 250px;" id="clicky" onclick="clicky(); return 0;"/>
 
 <br/><br/>
 
@@ -42,10 +47,9 @@ Show console
 
 <br/>
 
-<span style="font-size: 0.5em;">
-<sup>*</sup>That's what she said.
+<span style="font-size: 0.6em;">
+<sup>*</sup> That's what she said.
 </span>
 </div>
-</center>
 </body>
 </html>

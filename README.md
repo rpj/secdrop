@@ -1,7 +1,9 @@
 secdrop
 =======
 
-A secure, easy-to-use, HTML5-based drop box. Uses both symmetric encryption (first stage is AES-256, encrypted in-browser) and asymmetric (GPG public-key for second stage, performed on server side).
+A secure, easy-to-use, iOS-compatible drop box. 
+
+Makes use of both symmetric (first stage is AES-256, encrypted in-browser) and asymmetric encryption (GPG public-key for second stage, performed on server side).
 
 Because first-stage encryption is done within the browser itself via CryptoJS and uses 256-bit AES, an SSL server (HTTPS) isn't required. However, it is highly recommended.
 

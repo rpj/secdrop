@@ -12,7 +12,7 @@ Requirements
 
 * CryptoJS <http://code.google.com/p/crypto-js/>
 * jQuery >= 1.9.1 <http://jquery.com>
-* GPG (or PGP I suppose) <http://www.gnupg.org> 
+* GPG (or PGP) <http://www.gnupg.org> 
 * Bootstrap <http://twitter.github.com/bootstrap/>
 
 Recommended
@@ -25,4 +25,4 @@ Source hierarchy explanation
 
 * `client/` - The client-side (e.g. in-browser) implementation of UI and file-send functionality
 * `server/` - Server-side scripts for accepting uploads and second-stage asymmetric encryption.
-* `dec/` - The scripts/tools used to decrypt dropped files (_never_ use this on the server-side unless you fully trust your server!)
+* `dec/` - The scripts/tools used to decrypt dropped files. _Never_ use this on the server-side unless you _fully_ trust your server!

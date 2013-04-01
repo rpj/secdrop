@@ -25,4 +25,4 @@ Source hierarchy explanation
 
 * `client/` - The client-side (e.g. in-browser) implementation of UI and file-send functionality
 * `server/` - Server-side scripts for accepting uploads and second-stage asymmetric encryption.
-* `dec/` - The scripts/tools used to decrypt dropped files. _Never_ use this on the server-side unless you _fully_ trust your server!
+* `dec/` - The tools used to decrypt dropped files. Figure out how to get them from the server on your own. _Never_ use this on the server-side unless you _fully_ trust your server!

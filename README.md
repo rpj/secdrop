@@ -40,6 +40,7 @@ Installation & Use
  * Ensure GPG is available at */usr/bin/gpg* or set the proper path via the sec.cgi config (.sec.cgi.conf, key __GPGCLIPath__).
  * Configure the output path for dropped files via config key __OutputDirectory__. Default is */tmp/secdrop.output*. __This path must be writable for the user executing your CGI process__.
  * Configure the recipient GPG public key via config key __GPGRecipient__. This keypair must be available to the recipient using *dec/secdl.pl*.
+ * __Be certain__ that you've configured your chosen web server to disallow access to the config file as well as the path used for __OutputDirectory__. 
 
 * `dec/`
  * __Only use these scripts for decryption on a trusted machine.__

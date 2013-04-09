@@ -3,8 +3,44 @@
 use CGI qw/:all/;
 use JSON;
 
-my $ODIR = '/home/sulciphur/sec.rpj.me/.outdir';
-my $ENCCMD = '/usr/bin/gpg -e -r j@seph.us -a --trust-model always --batch --yes -o ';
+my $CONFIG = './.sec.cgi.conf';
+
+my $ODIR = '/tmp/secdrop.output';
+my $DEFGPGRECP = 'unknown@unknown.com';
+my $DEFGPGCLI = '/usr/bin/gpg';
+my $ENCCMD = "$DEFGPGCLI -e -r $DEFGPGRECP -a --trust-model always --batch --yes -o ";
+
+if (-e $CONFIG) {
+	my $ctext = undef;
+	
+	if (defined(open (CFG, "$CONFIG"))) {
+		local $/ = undef;
+		$ctext = <CFG>;
+		close (CFG);
+	}
+	
+	if (defined($ctext)) {
+		my $cfg = undef;
+		eval { $cfg = decode_json($ctext); };
+		
+		if (!$@ && defined($cfg)) {
+			my $temp = undef;
+			
+			$ODIR = $temp, if (defined(($temp = $cfg->{OutputDirectory})));
+			
+			if (defined(($temp = $cfg->{GPGRecipient}))) {
+				$ENCCMD =~ s/$DEFGPGRECP/$temp/g;
+			}
+			
+			if (defined(($temp = $cfg->{GPGCLIPath}))) {
+				$ENCCMD =~ s/$DEFGPGCLI/$temp/g;
+			}
+		}
+		else {
+			print STDERR "Malformed JSON in config '$CONFIG': $@\n";
+		}
+	}
+}
 
 my $c = new CGI();
 my $d = $c->param('XForms:Model');

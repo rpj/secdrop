@@ -1,11 +1,9 @@
 Secdrop
 =======
 
-A secure, easy-to-use, iOS-compatible drop box. 
+A secure, easy-to-use, iOS-compatible drop box that makes use of both symmetric (first stage is AES-256, encrypted in-browser) and asymmetric encryption (GPG public-key for second stage, performed on server side).
 
-Makes use of both symmetric (first stage is AES-256, encrypted in-browser) and asymmetric encryption (GPG public-key for second stage, performed on server side).
-
-Because first-stage encryption is done within the browser via CryptoJS (256-bit AES), an SSL server isn't required. However, it is _highly_ recommended.
+As first-stage encryption is performed within the browser via CryptoJS (256-bit AES), an SSL server isn't required. However, it is _highly_ recommended.
 
 Requirements
 ============
@@ -35,16 +33,16 @@ Installation & Use
 ====================
 
 * `client/`
- * Put these files in your 'DocumentRoot' or somewhere publicly-viewable for your HTTPS server.
- * Install client requirements (noted above) into the `js/` directory.
+ * Put these files in your __DocumentRoot__ or somewhere publicly-viewable for your HTTPS server.
+ * Install client requirements (noted above) into the *js/* directory.
 
 * `server/`
- * Ensure GPG is available at `/usr/bin/gpg` or set the proper path via the sec.cgi config (.sec.cgi.conf, key `GPGCLIPath`).
- * Configure the output path for dropped files via config key `OutputDirectory`. Default is `/tmp/secdrop.output`. _This path must be writable for the user executing your CGI process_.
- * Configure the recipient GPG public key via config key `GPGRecipient`. This keypair must be available to the recipient using `dec/secdl.pl`.
+ * Ensure GPG is available at */usr/bin/gpg* or set the proper path via the sec.cgi config (.sec.cgi.conf, key __GPGCLIPath__).
+ * Configure the output path for dropped files via config key __OutputDirectory__. Default is */tmp/secdrop.output*. __This path must be writable for the user executing your CGI process__.
+ * Configure the recipient GPG public key via config key __GPGRecipient__. This keypair must be available to the recipient using *dec/secdl.pl*.
 
 * `dec/`
  * __Only use these scripts for decryption on a trusted machine.__
- * `dec/secdl.pl arg1 arg2` decrypts files in `arg1` into directory `arg2`. (Presumably they came from `OutputDirectory` in the server config. I simply use `scp` to retrieve files.)
+ * `dec/secdl.pl arg1 arg2` decrypts files in *arg1* into directory *arg2*. (Presumably the files are sourced  from __OutputDirectory__ in the server config. I simply use *scp* to retrieve files.)
   * You will be prompted for the password the original sender used to encrypt via the web UI.
   * Second-stage decryption will be done with the GPG keypair for the recipient specified in the server config.

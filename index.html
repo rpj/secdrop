@@ -1,0 +1,121 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Secdrop by rpj</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Secdrop</h1>
+        <p>A secure, easy-to-use, iOS-compaible drop box.</p>
+
+        <p class="view"><a href="https://github.com/rpj/secdrop">View the Project on GitHub <small>rpj/secdrop</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/rpj/secdrop/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/rpj/secdrop/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/rpj/secdrop">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <p>Makes use of both symmetric (first stage is AES-256, encrypted in-browser) and asymmetric encryption (GPG public-key for second stage, performed on server side).</p>
+
+<p>As first-stage encryption is performed within the browser via CryptoJS (256-bit AES), an SSL server isn't required. However, it is <em>highly</em> recommended.</p>
+
+<h1>Requirements</h1>
+
+<ul>
+<li>
+<code>client/</code>
+
+<ul>
+<li>CryptoJS <a href="http://code.google.com/p/crypto-js/">http://code.google.com/p/crypto-js/</a>
+</li>
+<li>jQuery &gt;= 1.9.1 <a href="http://jquery.com">http://jquery.com</a>
+</li>
+<li>Bootstrap <a href="http://twitter.github.com/bootstrap/">http://twitter.github.com/bootstrap/</a>
+</li>
+</ul>
+</li>
+<li>
+<code>server/</code> and <code>dec/</code>
+
+<ul>
+<li>GPG (or PGP) <a href="http://www.gnupg.org">http://www.gnupg.org</a> </li>
+</ul>
+</li>
+<li>
+<code>dec/</code>
+
+<ul>
+<li>OpenSSL (command-line tool) <a href="http://www.openssl.org">http://www.openssl.org</a>
+</li>
+</ul>
+</li>
+</ul><h1>Recommended</h1>
+
+<ul>
+<li>An HTTPS server</li>
+</ul><h1>Source hierarchy</h1>
+
+<ul>
+<li>
+<code>client/</code> - The client-side implementation of the UI, first-stage encryption and file-send functionality</li>
+<li>
+<code>server/</code> - Server-side scripts for accepting uploads and performing second-stage asymmetric encryption.</li>
+<li>
+<code>dec/</code> - The tools used to decrypt dropped files. <em><strong>Never</strong></em> use this on the server-side unless you <em><strong>fully</strong></em> trust your server!</li>
+</ul><h1>Installation &amp; Use</h1>
+
+<ul>
+<li>
+<p><code>client/</code></p>
+
+<ul>
+<li>Put these files in your <strong>DocumentRoot</strong> or somewhere publicly-viewable for your HTTPS server.</li>
+<li>Install client requirements (noted above) into the <em>js/</em> directory.</li>
+</ul>
+</li>
+<li>
+<p><code>server/</code></p>
+
+<ul>
+<li>Ensure GPG is available at <em>/usr/bin/gpg</em> or set the proper path via the sec.cgi config (.sec.cgi.conf, key <strong>GPGCLIPath</strong>).</li>
+<li>Configure the output path for dropped files via config key <strong>OutputDirectory</strong>. Default is <em>/tmp/secdrop.output</em>. <strong>This path must be writable for the user executing your CGI process</strong>.</li>
+<li>Configure the recipient GPG public key via config key <strong>GPGRecipient</strong>. This keypair must be available to the recipient using <em>dec/secdl.pl</em>.</li>
+<li>
+<strong>Be certain</strong> that you've configured your chosen web server to disallow access to the config file as well as the path used for <strong>OutputDirectory</strong>. </li>
+</ul>
+</li>
+<li>
+<p><code>dec/</code></p>
+
+<ul>
+<li><strong>Only use these scripts for decryption on a trusted machine.</strong></li>
+<li>
+<code>dec/secdl.pl arg1 arg2</code> decrypts files in <em>arg1</em> into directory <em>arg2</em>. (Presumably the files are sourced  from <strong>OutputDirectory</strong> in the server config. I simply use <em>scp</em> to retrieve files.)</li>
+<li>You will be prompted for the password the original sender used to encrypt via the web UI.</li>
+<li>Second-stage decryption will be done with the GPG keypair for the recipient specified in the server config.</li>
+</ul>
+</li>
+</ul>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/rpj">rpj</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
